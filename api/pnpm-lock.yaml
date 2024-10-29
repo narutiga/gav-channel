@@ -1,0 +1,58 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  hono:
+    specifier: ^4.6.7
+    version: 4.6.7
+  zod:
+    specifier: ^3.23.8
+    version: 3.23.8
+
+devDependencies:
+  '@types/bun':
+    specifier: latest
+    version: 1.1.12
+
+packages:
+
+  /@types/bun@1.1.12:
+    resolution: {integrity: sha512-UkewJesRDP3+AW30Gc8hvxuIt+vHgYZXmVOKaXV8xnwAnMXTAs3XZDsa/jW+LSdAYhHslokSm72lq63FYYjZqA==}
+    dependencies:
+      bun-types: 1.1.32
+    dev: true
+
+  /@types/node@20.12.14:
+    resolution: {integrity: sha512-scnD59RpYD91xngrQQLGkE+6UrHUPzeKZWhhjBSa3HSkwjbQc38+q3RoIVEwxQGRw3M+j5hpNAM+lgV3cVormg==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
+
+  /@types/ws@8.5.12:
+    resolution: {integrity: sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==}
+    dependencies:
+      '@types/node': 20.12.14
+    dev: true
+
+  /bun-types@1.1.32:
+    resolution: {integrity: sha512-Lxgux4InO/WRjSAEy3iyDscsnDXR8+3rgNDeZYjPAizFYjUraoNuMl9PuRd9XMgFZgdyQwaUX7/QHmOw5KGFQw==}
+    dependencies:
+      '@types/node': 20.12.14
+      '@types/ws': 8.5.12
+    dev: true
+
+  /hono@4.6.7:
+    resolution: {integrity: sha512-wX4ZbOnzfNO61hUjuQbJ7OPGs1fWXXVVJ8VTPDb2Ls/x9HjCbVTm80Je6VTHMz5n5RGDtBgV9d9ZFZxBqx56ng==}
+    engines: {node: '>=16.9.0'}
+    dev: false
+
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true
+
+  /zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+    dev: false
