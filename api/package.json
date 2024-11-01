@@ -4,10 +4,15 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "@prisma/adapter-libsql": "^5.21.1",
+    "@prisma/client": "^5.21.1",
     "hono": "^4.6.7",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zod-prisma-types": "^3.1.8"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "prisma": "^5.21.1"
   }
 }

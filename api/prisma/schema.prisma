@@ -1,0 +1,73 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("TURSO_DATABASE_URL")
+}
+
+generator zod {
+  provider         = "zod-prisma-types"
+  createInputTypes = false
+}
+
+model User {
+  id         Int       @id @default(autoincrement())
+  name       String
+  admin      Boolean   @default(false) 
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime? 
+  threads    Thread[]  @relation("UserThreads")
+  posts      Post[]    @relation("UserPosts")
+  reports    Report[]  @relation("UserReports")
+}
+
+model Category {
+  id         Int       @id @default(autoincrement())
+  name       String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  threads    Thread[]
+}
+
+model Thread {
+  id         Int       @id @default(autoincrement())
+  title      String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime? 
+  userId     Int
+  categoryId Int
+  user       User      @relation("UserThreads", fields: [userId], references: [id])
+  category   Category  @relation(fields: [categoryId], references: [id])
+  posts      Post[]
+}
+
+model Post {
+  id            Int       @id @default(autoincrement())
+  content       String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime? 
+  threadId      Int
+  userId        Int
+  parentPostId  Int?      
+  thread        Thread    @relation(fields: [threadId], references: [id])
+  user          User      @relation("UserPosts", fields: [userId], references: [id])
+  parentPost    Post?     @relation("ParentPost", fields: [parentPostId], references: [id])
+  childPosts    Post[]    @relation("ParentPost")
+  reports       Report[]
+}
+
+model Report {
+  id        Int       @id @default(autoincrement())
+  reason    String
+  createdAt DateTime  @default(now())
+  postId    Int
+  userId    Int
+  post      Post      @relation(fields: [postId], references: [id])
+  user      User      @relation("UserReports", fields: [userId], references: [id])
+}
